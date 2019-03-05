@@ -1,5 +1,5 @@
 {
-    "name": "writingink/wink",
+    "name": "adamhut/wink",
     "description": "Wink Publishing Framework.",
     "keywords": ["framework", "laravel", "blog"],
     "license": "MIT",
@@ -7,6 +7,10 @@
         {
             "name": "Mohamed Said",
             "email": "mohamed@laravel.com"
+        },
+        {
+             "name": "Adam Huang",
+             "email": "adamhut@gmail.com"
         }
     ],
     "require": {
