@@ -41,4 +41,16 @@ return [
     */
 
     'path' => env('WINK_PATH', 'wink'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Wink Logo
+    |--------------------------------------------------------------------------
+    |
+    | This is the Image path for you to have custom Logo. Feel free to
+    | change this path to anything you like.
+    |
+    */
+
+    'logo' => env('WINK_LOGO', 'wink'),
 ];
