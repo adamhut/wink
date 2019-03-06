@@ -20,8 +20,9 @@
 <div class="container mt-20">
     <div class="xl:w-1/2 mx-auto">
         <div class="flex items-center mb-10">
-            @include('wink::logo')
-
+            <h2 class="mr-2 font-semibold font-serif" :class="{'hidden': hideLogoOnSmallScreens, 'sm:block': hideLogoOnSmallScreens}">
+                @include('wink::logo')
+            </h2>
             <h2 class="font-normal">— Log In</h2>
         </div>
 

@@ -1,6 +1,14 @@
 <script type="text/ecmascript">
 
     export default {
+        mounted() {
+            console.log(process.env.MIX_WINK_LOGO);
+        },
+        data() {
+            return {
+                logo: process.env.MIX_WINK_LOGO == 'wink' ? "<span class='text-light'>W</span>ink." : "<span class='text-light'>MyBCR</span>"
+            }
+        },
         computed: {
             hideLogoOnSmallScreens() {
                 return this.$slots['left-side']
@@ -15,8 +23,8 @@
             <div class="flex items-center py-2">
                 <div class="flex items-center mr-auto h-8">
                     <h3 class="mr-5 font-semibold font-serif" :class="{'hidden': hideLogoOnSmallScreens, 'sm:block': hideLogoOnSmallScreens}">
-                        <router-link to="/" class="no-underline text-text-color">
-                            <span class="text-light">W</span>ink.
+                        <router-link to="/" class="no-underline text-text-color" v-html="logo">
+                            <!-- <span class="text-light">W</span>ink. -->
                         </router-link>
                     </h3>
 
