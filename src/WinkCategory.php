@@ -2,7 +2,7 @@
 
 namespace Wink;
 
-class WinkPage extends AbstractWinkModel
+class WinkCategory extends AbstractWinkModel
 {
     /**
      * The attributes that aren't mass assignable.
@@ -16,7 +16,7 @@ class WinkPage extends AbstractWinkModel
      *
      * @var string
      */
-    protected $table = 'wink_pages';
+    protected $table = 'wink_categories';
 
     /**
      * The primary key for the model.
@@ -40,25 +40,35 @@ class WinkPage extends AbstractWinkModel
     public $incrementing = false;
 
     /**
-     * The attributes that should be cast to native types.
+     * The attributes that should be casted.
      *
      * @var array
      */
     protected $casts = [
-        'id' => 'string',
-        'body' => 'string',
         'meta' => 'array',
     ];
 
-
-
     /**
-     * The post the Page belongs to.
+     * The posts that has the tag.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function posts()
     {
-        return $this->belongsToMany(WinkPost::class, 'wink_post_page', 'page_id', 'post_id');
+        return $this->belongsToMany(WinkPost::class, 'wink_posts_category', 'category_id', 'post_id');
+    }
+
+    /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($item) {
+            $item->posts()->detach();
+        });
     }
 }

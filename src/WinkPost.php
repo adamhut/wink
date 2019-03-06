@@ -2,6 +2,9 @@
 
 namespace Wink;
 
+use Wink\WinkPage;
+use Wink\WinkCategory;
+
 class WinkPost extends AbstractWinkModel
 {
     /**
@@ -66,6 +69,16 @@ class WinkPost extends AbstractWinkModel
     public function tags()
     {
         return $this->belongsToMany(WinkTag::class, 'wink_posts_tags', 'post_id', 'tag_id');
+    }
+
+    /**
+     * The page the post belongs to.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function categories()
+    {
+        return $this->belongsToMany(WinkCategory::class, 'wink_post_category', 'post_id', 'category_id');
     }
 
     /**
