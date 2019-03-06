@@ -52,5 +52,5 @@ return [
     |
     */
 
-    'logo' => env('WINK_LOGO', 'wink'),
+    'logo' => env('MIX_WINK_LOGO', 'wink'),
 ];

@@ -1,9 +1,5 @@
-@if (config('wink.logo'))
-    <h2 class="mr-2 font-semibold font-serif" :class="{'hidden': hideLogoOnSmallScreens, 'sm:block': hideLogoOnSmallScreens}">
-        <span class="text-light">MyBCR</span>
-    </h2>
+@if (config('wink.logo') == 'wink')
+    <span class="text-light">W</span>ink.
 @else
-    <h2 class="mr-2 font-semibold font-serif" :class="{'hidden': hideLogoOnSmallScreens, 'sm:block': hideLogoOnSmallScreens}">
-        <span class="text-light">W</span>ink.
-    </h2>
+    <span class="text-light">MyBCR</span>
 @endif
