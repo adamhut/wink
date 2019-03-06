@@ -27,6 +27,12 @@ Route::get('/api/pages/{id?}', 'PagesController@show')->name('pages.show');
 Route::post('/api/pages/{id}', 'PagesController@store')->name('pages.store');
 Route::delete('/api/pages/{id}', 'PagesController@delete')->name('pages.delete');
 
+// Blog Categories...
+Route::get('/api/categories', 'CategoriesController@index')->name('categories.index');
+Route::get('/api/categories/{id?}', 'CategoriesController@show')->name('categories.show');
+Route::post('/api/categories/{id}', 'CategoriesController@store')->name('categories.store');
+Route::delete('/api/categories/{id}', 'CategoriesController@delete')->name('categories.delete');
+
 // Logout Route...
 Route::get('/logout', 'LoginController@logout')->name('logout');
 
