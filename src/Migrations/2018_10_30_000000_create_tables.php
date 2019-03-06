@@ -13,6 +13,7 @@ class CreateTables extends Migration
      */
     public function up()
     {
+
         Schema::create('wink_tags', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('slug')->unique();
@@ -71,12 +72,21 @@ class CreateTables extends Migration
                 $table->timestamps();
             });
         }
+        if (!Schema::hasTable( 'wink_categories')) {
+            Schema::create('wink_categories', function (Blueprint $table) {
+                $table->uuid('id')->primary();
+                $table->string('slug')->unique();
+                $table->string('name');
+                $table->timestamps();
+                $table->index('created_at');
+            });
+        }
 
-        if (!Schema::hasTable('wink_post_page')) {
-            Schema::create( 'wink_post_page', function (Blueprint $table) {
+        if (!Schema::hasTable('wink_post_category')) {
+            Schema::create( 'wink_post_category', function (Blueprint $table) {
                 $table->uuid('post_id');
-                $table->uuid('page_id');
-                $table->unique(['post_id', 'page_id']);
+                $table->uuid('category_id');
+                $table->unique(['post_id', 'category_id']);
             });
         }
     }
