@@ -31,13 +31,14 @@ class MigrateCommand extends Command
      */
     public function handle()
     {
+
         $shouldCreateNewAuthor =
             ! Schema::connection(config('wink.database_connection'))->hasTable('wink_authors') ||
             ! WinkAuthor::count();
 
         $this->call('migrate', [
             '--database' => config('wink.database_connection'),
-            '--path' => 'vendor/writingink/wink/src/Migrations',
+            '--path' => 'vendor/adamhut/wink/src/Migrations',
         ]);
 
         if ($shouldCreateNewAuthor) {

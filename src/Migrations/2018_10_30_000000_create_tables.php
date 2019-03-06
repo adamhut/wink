@@ -62,6 +62,23 @@ class CreateTables extends Migration
             $table->text('body');
             $table->timestamps();
         });
+
+        if (!Schema::hasTable('wink_post_downloads')) {
+            Schema::create('wink_post_downloads', function (Blueprint $table) {
+                $table->increments('id');
+                $table->uuid('wink_post_id');
+                $table->string('path');
+                $table->timestamps();
+            });
+        }
+
+        if (!Schema::hasTable('wink_post_page')) {
+            Schema::create( 'wink_post_page', function (Blueprint $table) {
+                $table->uuid('post_id');
+                $table->uuid('page_id');
+                $table->unique(['post_id', 'page_id']);
+            });
+        }
     }
 
     /**
@@ -76,5 +93,7 @@ class CreateTables extends Migration
         Schema::dropIfExists('wink_authors');
         Schema::dropIfExists('wink_posts');
         Schema::dropIfExists('wink_pages');
+        Schema::dropIfExists('wink_post_downloads');
+        Schema::dropIfExists('wink_post_page');
     }
 }
