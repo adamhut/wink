@@ -5,6 +5,7 @@ namespace adamhut\Wink\Http\Controllers;
 use adamhut\Wink\WinkTag;
 use adamhut\Wink\WinkPost;
 use Illuminate\Support\Str;
+use adamhut\Wink\WinkCategory;
 use Illuminate\Validation\Rule;
 use adamhut\Wink\Http\Resources\PostsResource;
 
@@ -33,7 +34,7 @@ class PostsController
             });
         })
             ->orderBy('created_at', 'DESC')
-            ->with('tags')
+            ->with('tags', 'categories')
             ->paginate(30);
 
         return PostsResource::collection($entries);
@@ -53,7 +54,7 @@ class PostsController
             ]);
         }
 
-        $entry = WinkPost::with('tags')->findOrFail($id);
+        $entry = WinkPost::with('tags', 'categories')->findOrFail($id);
 
         return response()->json([
             'entry' => $entry,
@@ -98,6 +99,10 @@ class PostsController
             $this->collectTags(request('tags'))
         );
 
+        $entry->categories()->sync(
+            $this->collectCategories(request('categories'))
+        );
+
         return response()->json([
             'entry' => $entry,
         ]);
@@ -121,6 +126,31 @@ class PostsController
                     'id' => $id = Str::uuid(),
                     'name' => $incomingTag['name'],
                     'slug' => Str::slug($incomingTag['name']),
+                ]);
+            }
+
+            return (string) $tag->id;
+        })->toArray();
+    }
+
+    /**
+     * Categories incoming from the request.
+     *
+     * @param  array  $incomingCategories
+     * @return array
+     */
+    private function collectCategories($incomingCategories)
+    {
+        $allCategories = WinkCategory::all();
+
+        return collect($incomingCategories)->map(function ($incomingCategory) use ($allCategories) {
+            $tag = $allCategories->where('slug', Str::slug($incomingCategory['name']))->first();
+
+            if (! $tag) {
+                $tag = WinkCategory::create([
+                    'id' => $id = Str::uuid(),
+                    'name' => $incomingCategory['name'],
+                    'slug' => Str::slug($incomingCategory['name']),
                 ]);
             }
 
