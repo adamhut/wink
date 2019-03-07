@@ -53,4 +53,15 @@ return [
     */
 
     'logo' => env('MIX_WINK_LOGO', 'wink'),
+
+     /*
+    |--------------------------------------------------------------------------
+    | Wink Admins
+    |--------------------------------------------------------------------------
+    |
+    | This is the Admin Email who can add or update categories and tags.
+    |
+    */
+
+    'admins' => [],
 ];

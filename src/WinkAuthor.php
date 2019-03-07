@@ -149,4 +149,11 @@ class WinkAuthor extends AbstractWinkModel implements Authenticatable
     {
         return $value ?: 'https://secure.gravatar.com/avatar/'.md5(strtolower(trim($this->email))).'?s=80';
     }
+
+
+
+    public function isAdmin()
+    {
+        return  collect(config('wink.admins',[]))->contains($this->email);
+    }
 }
