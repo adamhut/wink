@@ -75,9 +75,9 @@
 
                 if (_.includes(values, option.id)) return;
 
-                if (option[this.optionId] == 'addNew') {
+                /* if (option[this.optionId] == 'addNew') {
                     return this.addNewOption();
-                }
+                } */
 
                 this.searchTerm = '';
 
@@ -144,6 +144,7 @@
             addSelectedOption() {
                 if (!this.matches[this.selectedOptionIndex]) {
                     //return this.addNewOption();
+                    return;
                 }
 
                 this.selectOption(
