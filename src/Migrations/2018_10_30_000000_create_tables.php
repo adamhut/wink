@@ -104,6 +104,7 @@ class CreateTables extends Migration
         Schema::dropIfExists('wink_posts');
         Schema::dropIfExists('wink_pages');
         Schema::dropIfExists('wink_post_downloads');
-        Schema::dropIfExists('wink_post_page');
+        Schema::dropIfExists('wink_post_category');
+        Schema::dropIfExists('wink_categories');
     }
 }
