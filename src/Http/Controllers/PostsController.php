@@ -27,6 +27,10 @@ class PostsController
             $q->whereHas('tags', function ($query) use ($value) {
                 $query->where('id', $value);
             });
+        })->when(request('category_id'), function ($q, $value) {
+            $q->whereHas('categories', function ($query) use ($value) {
+                $query->where('id', $value);
+            });
         })
             ->orderBy('created_at', 'DESC')
             ->with('tags')

@@ -55,7 +55,7 @@ class WinkCategory extends AbstractWinkModel
      */
     public function posts()
     {
-        return $this->belongsToMany(WinkPost::class, 'wink_posts_category', 'category_id', 'post_id');
+        return $this->belongsToMany(WinkPost::class, 'wink_post_category', 'category_id', 'post_id');
     }
 
     /**

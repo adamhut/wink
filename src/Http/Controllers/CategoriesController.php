@@ -8,7 +8,7 @@ use Illuminate\Validation\Rule;
 use Wink\Http\Resources\CategoriesResource;
 
 
-class CategoriessController
+class CategoriesController
 {
     /**
      * Return posts.
