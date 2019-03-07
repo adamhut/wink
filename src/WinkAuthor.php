@@ -151,9 +151,13 @@ class WinkAuthor extends AbstractWinkModel implements Authenticatable
     }
 
 
-
+    /**
+     * check the Author is predefine Admin or not
+     *
+     * @return boolean
+     */
     public function isAdmin()
     {
-        return  collect(config('wink.admins',[]))->contains($this->email);
+        return collect(config('wink.admins',[]))->contains($this->email);
     }
 }
