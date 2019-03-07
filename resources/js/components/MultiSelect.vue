@@ -143,6 +143,7 @@
              */
             addSelectedOption() {
                 if (!this.matches[this.selectedOptionIndex]) {
+                    this.searchTerm = "";
                     //return this.addNewOption();
                     return;
                 }
