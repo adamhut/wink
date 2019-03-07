@@ -6,7 +6,7 @@ use adamhut\Wink\WinkTag;
 use adamhut\Wink\WinkPost;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
-use Wink\Http\Resources\PostsResource;
+use adamhut\Wink\Http\Resources\PostsResource;
 
 class PostsController
 {
