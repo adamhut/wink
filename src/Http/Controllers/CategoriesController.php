@@ -1,11 +1,11 @@
 <?php
 
-namespace Wink\Http\Controllers;
+namespace adamhut\Wink\Http\Controllers;
 
-use Wink\WinkCategory;
+use adamhut\Wink\WinkCategory;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
-use Wink\Http\Resources\CategoriesResource;
+use adamhut\Wink\Http\Resources\CategoriesResource;
 
 
 class CategoriessController
@@ -58,6 +58,7 @@ class CategoriessController
      */
     public function store($id)
     {
+
         $data = [
             'name' => request('name'),
             'slug' => request('slug'),
@@ -81,7 +82,7 @@ class CategoriessController
     }
 
     /**
-     * Return a single tag.
+     * Return a single category.
      *
      * @param  string  $id
      * @return void

@@ -1,9 +1,9 @@
 <?php
 
-namespace Wink;
+namespace adamhut\Wink;
 
 use Illuminate\Support\Facades\Route;
-use Wink\Http\Middleware\Authenticate;
+use adamhut\Wink\Http\Middleware\Authenticate;
 use Illuminate\Support\ServiceProvider;
 
 class WinkServiceProvider extends ServiceProvider
@@ -33,7 +33,7 @@ class WinkServiceProvider extends ServiceProvider
     {
         $path = config('wink.path');
 
-        Route::namespace('Wink\Http\Controllers')
+        Route::namespace( 'adamhut\Wink\Http\Controllers')
             ->middleware('web')
             ->as('wink.')
             ->prefix($path)
@@ -46,13 +46,14 @@ class WinkServiceProvider extends ServiceProvider
                 Route::get('/password/reset/{token}', 'ForgotPasswordController@showNewPassword')->name('password.reset');
             });
 
-        Route::namespace('Wink\Http\Controllers')
+        Route::namespace( 'adamhut\Wink\Http\Controllers')
             ->middleware(['web', Authenticate::class])
             ->as('wink.')
             ->prefix($path)
             ->group(function () {
                 $this->loadRoutesFrom(__DIR__.'/Http/routes.php');
             });
+
     }
 
     /**

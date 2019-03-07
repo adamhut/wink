@@ -1,6 +1,6 @@
 <?php
 
-namespace Wink\Mail;
+namespace adamhut\Wink\Mail;
 
 use Illuminate\Mail\Mailable;
 

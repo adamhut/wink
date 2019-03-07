@@ -1,6 +1,8 @@
 <?php
 
-namespace Wink;
+namespace adamhut\Wink;
+
+use adamhut\Wink\AbstractWinkModel;
 
 class WinkCategory extends AbstractWinkModel
 {

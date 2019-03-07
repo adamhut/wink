@@ -1,6 +1,6 @@
 <?php
 
-namespace Wink\Http\Resources;
+namespace adamhut\Wink\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 

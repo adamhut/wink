@@ -1,9 +1,9 @@
 <?php
 
-namespace Wink;
+namespace adamhut\Wink;
 
-use Wink\WinkPage;
-use Wink\WinkCategory;
+use adamhut\Wink\WinkPage;
+use adamhut\Wink\WinkCategory;
 
 class WinkPost extends AbstractWinkModel
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Wink\Console;
+namespace adamhut\Wink\Console;
 
 use Illuminate\Console\Command;
 
