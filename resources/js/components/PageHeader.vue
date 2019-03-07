@@ -1,9 +1,6 @@
 <script type="text/ecmascript">
 
     export default {
-        mounted() {
-            console.log(process.env.MIX_WINK_LOGO);
-        },
         data() {
             return {
                 logo: process.env.MIX_WINK_LOGO == 'wink' ? "<span class='text-light'>W</span>ink." : "<span class='text-light'>MyBCR</span>"
