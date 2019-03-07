@@ -1,6 +1,6 @@
 <?php
 
-namespace Wink;
+namespace adamhut\Wink;
 
 class Wink
 {

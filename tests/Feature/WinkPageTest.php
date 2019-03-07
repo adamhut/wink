@@ -1,16 +1,17 @@
 <?php
-namespace Wink\Tests\Feature;
+namespace adamhut\Wink\Tests\Feature;
 
 
-use Wink\WinkPage;
-use Wink\WinkPost;
-use Wink\WinkCategory;
-use Wink\Tests\TestCase;
+use adamhut\Wink\WinkPage;
+use adamhut\Wink\WinkPost;
+use adamhut\Wink\WinkCategory;
+use adamhut\Wink\Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class SavePostsTest extends TestCase
+class WinkPageTest extends TestCase
 {
     use RefreshDatabase;
+
 
     /** @test */
     public function a_category_can_be_created_with_the_factory()
@@ -42,6 +43,9 @@ class SavePostsTest extends TestCase
         $this->assertEquals( $category->id, $post->categories->first()->id);
 
     }
+
+
+
 
 }
 

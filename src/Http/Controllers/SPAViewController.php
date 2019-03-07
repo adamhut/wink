@@ -1,8 +1,8 @@
 <?php
 
-namespace Wink\Http\Controllers;
+namespace adamhut\Wink\Http\Controllers;
 
-use Wink\Wink;
+use adamhut\Wink\Wink;
 
 class SPAViewController
 {

@@ -1,6 +1,6 @@
 <?php
 
-use Wink\WinkPost;
+use adamhut\Wink\WinkPost;
 use Faker\Generator;
 
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace Wink\Http\Controllers;
+namespace adamhut\Wink\Http\Controllers;
 
-use Wink\WinkTag;
-use Wink\WinkPost;
+use adamhut\Wink\WinkTag;
+use adamhut\Wink\WinkPost;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Wink\Http\Resources\PostsResource;

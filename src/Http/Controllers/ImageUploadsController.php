@@ -1,6 +1,6 @@
 <?php
 
-namespace Wink\Http\Controllers;
+namespace adamhut\Wink\Http\Controllers;
 
 use Illuminate\Support\Facades\Storage;
 

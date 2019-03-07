@@ -1,7 +1,7 @@
 <?php
 
 use Faker\Generator;
-use Wink\WinkCategory;
+use adamhut\Wink\WinkCategory;
 
 
 $factory->define(WinkCategory::class, function (Faker\Generator $faker) {

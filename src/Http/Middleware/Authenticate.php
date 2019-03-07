@@ -1,6 +1,6 @@
 <?php
 
-namespace Wink\Http\Middleware;
+namespace adamhut\Wink\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;

@@ -1,11 +1,11 @@
 <?php
 
-namespace Wink\Http\Controllers;
+namespace adamhut\Wink\Http\Controllers;
 
-use Wink\WinkPage;
+use adamhut\Wink\WinkPage;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
-use Wink\Http\Resources\PagesResource;
+use adamhut\Wink\Http\Resources\PagesResource;
 
 class PagesController
 {

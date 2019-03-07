@@ -1,11 +1,11 @@
 <?php
 
-namespace Wink\Http\Controllers;
+namespace adamhut\Wink\Http\Controllers;
 
 use Throwable;
-use Wink\WinkAuthor;
+use adamhut\Wink\WinkAuthor;
 use Illuminate\Support\Str;
-use Wink\Mail\ResetPasswordEmail;
+use adamhut\Wink\Mail\ResetPasswordEmail;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Mail;
 
