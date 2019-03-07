@@ -1,7 +1,6 @@
 <?php
 namespace adamhut\Wink\Tests\Feature;
 
-use adamhut\Wink\WinkPost;
 use adamhut\Wink\WinkCategory;
 use adamhut\Wink\Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;

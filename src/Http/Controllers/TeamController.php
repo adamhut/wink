@@ -2,11 +2,11 @@
 
 namespace adamhut\Wink\Http\Controllers;
 
-use Wink\WinkAuthor;
+use adamhut\Wink\WinkAuthor;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
-use Wink\Http\Resources\TeamResource;
+use adamhut\Wink\Http\Resources\TeamResource;
 
 class TeamController
 {

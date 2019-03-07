@@ -2,10 +2,10 @@
 
 namespace adamhut\Wink\Http\Controllers;
 
-use Wink\WinkTag;
+use adamhut\Wink\WinkTag;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
-use Wink\Http\Resources\TagsResource;
+use adamhut\Wink\Http\Resources\TagsResource;
 
 class TagsController
 {
