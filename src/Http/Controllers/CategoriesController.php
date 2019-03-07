@@ -28,7 +28,7 @@ class CategoriesController
     }
 
     /**
-     * Return a single post.
+     * Return a single category.
      *
      * @param  string  $id
      * @return \Illuminate\Http\JsonResponse
@@ -58,11 +58,10 @@ class CategoriesController
      */
     public function store($id)
     {
-
         $data = [
             'name' => request('name'),
             'slug' => request('slug'),
-            //'meta' => request('meta', (object)[]),
+            'meta' => request('meta', (object)[]),
         ];
 
         validator($data, [

@@ -9,10 +9,8 @@ class WinkCategoryTest extends TestCase
 {
     use RefreshDatabase;
 
-
     private function validParams($overrides = [])
     {
-
         return array_merge([
             'slug' => 'foo-bar',
             'name' => 'Foo Bar',
@@ -25,8 +23,13 @@ class WinkCategoryTest extends TestCase
     public function it_will_create_a_category()
     {
         $param = $this->validParams();
+
         $this->assertCount(0, WinkCategory::all());
-        $this->get(route('wink.categories.index'));
+
+        $this->post(route('wink.categories.store',['id'=>'new']));
+
+        $this->assertCount(1, WinkCategory::all());
+
 
     }
 
