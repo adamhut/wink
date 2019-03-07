@@ -17,14 +17,14 @@
 
         mounted() {
             this.$refs.input.style.width = this.value.length ? '25px' : '108px';
-            this.$refs.input.placeholder = this.value.length ? '' : 'Add tags';
+            this.$refs.input.placeholder = this.value.length ? '' : 'Add';
         },
 
 
         watch: {
             value(val) {
                 this.$refs.input.style.width = this.value.length ? '25px' : '108px';
-                this.$refs.input.placeholder = this.value.length ? '' : 'Add tags';
+                this.$refs.input.placeholder = this.value.length ? '' : 'Add';
             },
 
             searchTerm(val) {
@@ -53,12 +53,12 @@
                             option[this.optionText].toLowerCase().indexOf(this.searchTerm.toLowerCase()) == -1;
                     });
 
-                    let addNewOption = {};
+                    /* let addNewOption = {};
 
                     addNewOption[this.optionText] = 'Add new';
                     addNewOption[this.optionId] = 'addNew';
 
-                    matches.unshift(addNewOption);
+                    matches.unshift(addNewOption); */
 
                     return matches;
                 }
@@ -143,7 +143,7 @@
              */
             addSelectedOption() {
                 if (!this.matches[this.selectedOptionIndex]) {
-                    return this.addNewOption();
+                    //return this.addNewOption();
                 }
 
                 this.selectOption(
@@ -225,7 +225,7 @@
         </div>
 
         <div class="multiselect_dropdown absolute w-full" v-show="focused">
-            <button v-if="! matches.length" class="text-text-color">Add new tag...</button>
+            <!-- <button v-if="! matches.length" class="text-text-color">Add new tag...</button> -->
             <button v-for="(match, index) in matches"
                     v-on:click="selectOption(match)"
                     :class="{selected: selectedOptionIndex == index}"

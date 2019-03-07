@@ -16,6 +16,7 @@
             return {
                 baseURL: '/api/posts',
                 tags: [],
+                categories: [],
                 authors: [],
                 entries: [],
                 hasMoreEntries: false,
@@ -28,6 +29,7 @@
                     status: '',
                     author_id: '',
                     tag_id: '',
+                    category_id: '',
                 }
             };
         },
@@ -56,6 +58,10 @@
                     this.tags = response.data.data;
                 });
 
+                this.http().get('/api/categories').then(response => {
+                    this.categories = response.data.data;
+                });
+
                 this.http().get('/api/team').then(response => {
                     this.authors = response.data.data;
                 });
@@ -69,6 +75,12 @@
                 return _.chain(tags).map('name').join(', ').value();
             },
 
+            /**
+             * Format the given categories for display.
+             */
+            formatCategories(categories) {
+                return _.chain(categories).map('name').join(', ').value();
+            },
 
             /**
              * Clear the filters.
@@ -135,6 +147,16 @@
                         </select>
                     </div>
 
+                    <div class="flex items-center justify-between mt-3">
+                        <span>Category</span>
+                        <select name="category"
+                                class="border border-lighter rounded w-3/5 focus:outline-none appearance-none py-1 px-3"
+                                v-model="filters.category_id">
+                            <option value="">All</option>
+                            <option v-for="category in categories" :value="category.id">{{category.name}}</option>
+                        </select>
+                    </div>
+
                     <button v-if="isFiltered"
                             @click.prevent="clearFilters"
                             class="btn-sm btn-light w-full mt-5">Reset
@@ -171,12 +193,13 @@
                             <span v-if="! entry.published" class="text-red">Draft</span>
                             — Updated {{timeAgo(entry.updated_at)}}
                             <span v-if="entry.tags.length">— Tags: {{formatTags(entry.tags)}}</span>
+                            <span v-if="entry.categories.length">— Categories: {{formatCategories(entry.categories)}}</span>
                         </small>
                     </div>
 
                     <router-link :to="{name:'post-edit', params:{id: entry.id}}" class="no-underline ml-auto hidden lg:block">
                         <div class="w-16 h-16 rounded-full bg-cover" v-if="entry.featured_image" :style="{ backgroundImage: 'url(' + entry.featured_image + ')' }"></div>
-                        <div class="w-16 h-16 rounded-full bg-light flex items-center justify-center text-4xl text-contrast" v-else="entry.featured_image">
+                        <div class="w-16 h-16 rounded-full bg-light flex items-center justify-center text-4xl text-contrast" v-else>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current w-8">
                                 <path d="M0 6c0-1.1.9-2 2-2h3l2-2h6l2 2h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6zm10 10a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0-2a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
                             </svg>
