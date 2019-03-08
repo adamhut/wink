@@ -49,6 +49,8 @@
 <!-- Global Wink Object -->
 <script>
     window.Wink = @json($winkScriptVariables);
+    window.isAdmin = @json(in_array(@auth('wink')->user()->email,config('wink.admins')));
+    window.logo = @json(config('wink.logo') == 'wink');
 </script>
 
 <script src="{{mix('app.js', 'vendor/wink')}}"></script>

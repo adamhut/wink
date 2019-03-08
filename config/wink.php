@@ -63,5 +63,5 @@ return [
     |
     */
 
-    'admins' => [],
+    'admins' => ['admin@mail.com'],
 ];

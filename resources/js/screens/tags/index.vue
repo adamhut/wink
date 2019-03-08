@@ -26,6 +26,9 @@
             };
         },
 
+        computed: {
+            isAdmin: function () { return window.isAdmin; }
+        },
 
         /**
          * Prepare the component.
@@ -42,7 +45,7 @@
     <div>
         <page-header>
             <div slot="right-side">
-                <router-link :to="{name:'tag-new'}" class="py-1 px-2 btn-primary text-sm">
+                <router-link v-if="isAdmin" :to="{name:'tag-new'}" class="py-1 px-2 btn-primary text-sm">
                     New Tag
                 </router-link>
             </div>

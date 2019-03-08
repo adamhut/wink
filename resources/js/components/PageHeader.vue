@@ -3,7 +3,7 @@
     export default {
         data() {
             return {
-                logo: process.env.MIX_WINK_LOGO == 'wink' ? "<span class='text-light'>W</span>ink." : "<span class='text-light'>MyBCR</span>"
+                logo: window.logo ? "<span class='text-light'>W</span>ink." : "<span class='text-light'>MyBCR</span>"
             }
         },
         computed: {

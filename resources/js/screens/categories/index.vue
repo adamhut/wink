@@ -27,6 +27,10 @@
         },
 
 
+        computed: {
+            isAdmin: function () { return window.isAdmin; }
+        },
+        
         /**
          * Prepare the component.
          */
@@ -42,7 +46,7 @@
     <div>
         <page-header>
             <div slot="right-side">
-                <router-link :to="{name:'category-new'}" class="py-1 px-2 btn-primary text-sm">
+                <router-link v-if="isAdmin" :to="{name:'category-new'}" class="py-1 px-2 btn-primary text-sm">
                     New Category
                 </router-link>
             </div>
