@@ -28,9 +28,14 @@ class AddMetaFields extends Migration
         Schema::table('wink_posts', function (Blueprint $table) {
             $table->text('meta')->nullable();
         });
-        Schema::table('wink_categories', function (Blueprint $table) {
-            $table->text('meta')->nullable();
-        });
+
+        if (Schema::hasTable( 'wink_categories')) {
+            Schema::table( 'wink_categories', function (Blueprint $table) {
+                if (!Schema::hasColumn( 'wink_categories', 'meta')) {
+                    $table->text('meta')->nullable();
+                }
+            });
+        }
     }
 
     /**
@@ -55,8 +60,14 @@ class AddMetaFields extends Migration
         Schema::table('wink_posts', function (Blueprint $table) {
             $table->dropColumn('meta');
         });
-        Schema::table('wink_categories', function (Blueprint $table) {
-            $table->dropColumn('meta');
-        });
+
+        if (Schema::hasTable('wink_categories')) {
+            Schema::table('wink_categories', function (Blueprint $table) {
+                if (Schema::hasColumn('wink_categories', 'meta')) {
+                    $table->dropColumn('meta');
+                }
+            });
+        }
+
     }
 }
