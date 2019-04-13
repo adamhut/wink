@@ -41,9 +41,9 @@ class WinkServiceProvider extends ServiceProvider
                 Route::get('/login', 'LoginController@showLoginForm')->name('auth.login');
                 Route::post('/login', 'LoginController@login')->name('auth.attempt');
 
-                Route::get('/password/forgot', 'ForgotPasswordController@showResetRequestForm')->name('password.forgot');
-                Route::post('/password/forgot', 'ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-                Route::get('/password/reset/{token}', 'ForgotPasswordController@showNewPassword')->name('password.reset');
+                // Route::get('/password/forgot', 'ForgotPasswordController@showResetRequestForm')->name('password.forgot');
+                // Route::post('/password/forgot', 'ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+                // Route::get('/password/reset/{token}', 'ForgotPasswordController@showNewPassword')->name('password.reset');
             });
 
         Route::namespace( 'adamhut\Wink\Http\Controllers')
