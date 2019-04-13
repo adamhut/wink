@@ -2,14 +2,17 @@
 
 namespace adamhut\Wink\Http\Controllers;
 
-use adamhut\Wink\WinkCategory;
+use adamhut\Wink\Wink;
 use Illuminate\Support\Str;
+use adamhut\Wink\WinkCategory;
 use Illuminate\Validation\Rule;
+use adamhut\Wink\Http\Middleware\WinkAdmin;
 use adamhut\Wink\Http\Resources\CategoriesResource;
 
 
 class CategoriesController
 {
+
     /**
      * Return posts.
      *
@@ -35,6 +38,7 @@ class CategoriesController
      */
     public function show($id = null)
     {
+
         if ($id === 'new') {
             return response()->json([
                 'entry' => WinkCategory::make([
@@ -58,6 +62,8 @@ class CategoriesController
      */
     public function store($id)
     {
+        Wink::abortIfNotAdmin();
+
         $data = [
             'name' => request('name'),
             'slug' => request('slug'),
@@ -88,6 +94,8 @@ class CategoriesController
      */
     public function delete($id)
     {
+        Wink::abortIfNotAdmin();
+
         $entry = WinkCategory::findOrFail($id);
 
         $entry->delete();

@@ -17,4 +17,16 @@ class Wink
             'author' => auth('wink')->check() ? auth('wink')->user()->only('name', 'avatar', 'id') : null,
         ];
     }
+
+    /**
+     * Abort the Http Request if not Admi
+     *
+     * @return array
+     */
+    public static function abortIfNotAdmin()
+    {
+        if (!in_array(auth()->user()->email, config('wink.admins'))) {
+            abort(403);
+        }
+    }
 }

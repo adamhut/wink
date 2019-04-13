@@ -3,6 +3,7 @@
     export default {
         data() {
             return {
+                isAdmin:window.isAdmin,
                 logo: window.logo ? "<span class='text-light'>W</span>ink." : "<span class='text-light'>MyBCR</span>"
             }
         },
@@ -43,20 +44,25 @@
                             <router-link to="/posts" class="no-underline text-text-color hover:text-primary w-full block py-2 px-4">
                                 Posts
                             </router-link>
-                            <router-link to="/pages" class="no-underline text-text-color hover:text-primary w-full block py-2 px-4">
-                                Pages
-                            </router-link>
+                            <div v-if="isAdmin">
+                                <router-link to="/pages" class="no-underline text-text-color hover:text-primary w-full block py-2 px-4">
+                                    Pages
+                                </router-link>
 
-                            <router-link to="/tags" class="no-underline text-text-color hover:text-primary w-full block py-2 px-4">
-                                Tags
-                            </router-link>
-                            <router-link to="/categories" class="no-underline text-text-color hover:text-primary w-full block py-2 px-4">
-                                Categories
-                            </router-link>
+                                <router-link to="/tags" class="no-underline text-text-color hover:text-primary w-full block py-2 px-4">
+                                    Tags
+                                </router-link>
+                                <router-link to="/categories" class="no-underline text-text-color hover:text-primary w-full block py-2 px-4">
+                                    Categories
+                                </router-link>
 
-                            <router-link to="/team" class="no-underline text-text-color hover:text-primary w-full block py-2 px-4">
-                                Team
-                            </router-link>
+                                <router-link to="/team" class="no-underline text-text-color hover:text-primary w-full block py-2 px-4">
+                                    Team
+                                </router-link>
+                            </div>
+
+
+
                             <a :href="'/'+Wink.path+'/logout'" class="no-underline text-text-color hover:text-primary w-full block py-2 px-4 border-t border-very-light">
                                 Log out
                             </a>

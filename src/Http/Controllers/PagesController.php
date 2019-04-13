@@ -2,9 +2,11 @@
 
 namespace adamhut\Wink\Http\Controllers;
 
+use adamhut\Wink\Wink;
 use adamhut\Wink\WinkPage;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
+use adamhut\Wink\Http\Middleware\WinkAdmin;
 use adamhut\Wink\Http\Resources\PagesResource;
 
 class PagesController
@@ -33,6 +35,7 @@ class PagesController
      */
     public function show($id = null)
     {
+
         if ($id === 'new') {
             return response()->json([
                 'entry' => WinkPage::make(['id' => Str::uuid()]),
@@ -54,6 +57,7 @@ class PagesController
      */
     public function store($id)
     {
+        Wink::abortIfNotAdmin();
         $data = [
             'title' => request('title'),
             'slug' => request('slug'),
@@ -85,6 +89,8 @@ class PagesController
      */
     public function delete($id)
     {
+        Wink::abortIfNotAdmin();
+
         $entry = WinkPage::findOrFail($id);
 
         $entry->delete();

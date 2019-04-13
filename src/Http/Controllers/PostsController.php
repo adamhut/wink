@@ -121,16 +121,22 @@ class PostsController
         return collect($incomingTags)->map(function ($incomingTag) use ($allTags) {
             $tag = $allTags->where('slug', Str::slug($incomingTag['name']))->first();
 
-            if (! $tag) {
-                $tag = WinkTag::create([
-                    'id' => $id = Str::uuid(),
-                    'name' => $incomingTag['name'],
-                    'slug' => Str::slug($incomingTag['name']),
-                ]);
+            if (!$tag) {
+                return false;
             }
+            // if (! $tag) {
+            //     $tag = WinkTag::create([
+            //         'id' => $id = Str::uuid(),
+            //         'name' => $incomingTag['name'],
+            //         'slug' => Str::slug($incomingTag['name']),
+            //     ]);
+            // }
 
             return (string) $tag->id;
-        })->toArray();
+        })->filter(function($tag){
+            return $tag;
+        })
+        ->toArray();
     }
 
     /**
@@ -144,17 +150,26 @@ class PostsController
         $allCategories = WinkCategory::all();
 
         return collect($incomingCategories)->map(function ($incomingCategory) use ($allCategories) {
-            $tag = $allCategories->where('slug', Str::slug($incomingCategory['name']))->first();
-
-            if (! $tag) {
-                $tag = WinkCategory::create([
-                    'id' => $id = Str::uuid(),
-                    'name' => $incomingCategory['name'],
-                    'slug' => Str::slug($incomingCategory['name']),
-                ]);
+            $category = $allCategories->filter(function($category) use( $incomingCategory) {
+                                return $category->slug == Str::slug($incomingCategory['name']) ||
+                                    $category->name == $incomingCategory['name'];
+                            })
+                            ->first();
+            if(!$category)
+            {
+                return false;
             }
+            // if (! $category) {
+            //     $category = WinkCategory::create([
+            //         'id' => $id = Str::uuid(),
+            //         'name' => $incomingCategory['name'],
+            //         'slug' => Str::slug($incomingCategory['name']),
+            //     ]);
+            // }
 
-            return (string) $tag->id;
+            return (string) $category->id;
+        })->filter(function ($category) {
+            return $category;
         })->toArray();
     }
 

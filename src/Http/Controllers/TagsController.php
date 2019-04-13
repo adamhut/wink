@@ -2,6 +2,7 @@
 
 namespace adamhut\Wink\Http\Controllers;
 
+use adamhut\Wink\Wink;
 use adamhut\Wink\WinkTag;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
@@ -16,9 +17,10 @@ class TagsController
      */
     public function index()
     {
+
         $entries = WinkTag::when(request()->has('search'), function ($q) {
-            $q->where('name', 'LIKE', '%'.request('search').'%');
-        })
+                $q->where('name', 'LIKE', '%'.request('search').'%');
+            })
             ->orderBy('created_at', 'DESC')
             ->withCount('posts')
             ->get();
@@ -57,6 +59,8 @@ class TagsController
      */
     public function store($id)
     {
+        Wink::abortIfNotAdmin();
+
         $data = [
             'name' => request('name'),
             'slug' => request('slug'),
@@ -87,6 +91,8 @@ class TagsController
      */
     public function delete($id)
     {
+        Wink::abortIfNotAdmin();
+
         $entry = WinkTag::findOrFail($id);
 
         $entry->delete();
