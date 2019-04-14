@@ -72,7 +72,7 @@ class CreateTables extends Migration
                 $table->timestamps();
             });
         }
-        if (!Schema::hasTable( 'wink_categories')) {
+        if (!Schema::hasTable('wink_categories')) {
             Schema::create('wink_categories', function (Blueprint $table) {
                 $table->uuid('id')->primary();
                 $table->string('slug')->unique();

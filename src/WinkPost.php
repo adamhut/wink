@@ -72,7 +72,7 @@ class WinkPost extends AbstractWinkModel
     }
 
     /**
-     * The page the post belongs to.
+     * The categories the post belongs to.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
