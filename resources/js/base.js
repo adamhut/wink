@@ -61,7 +61,8 @@ export default {
         slugify(text) {
             return text.toString().toLowerCase()
                 .replace(/\s+/g, '-')
-                .replace(/[^\w\-]+/g, '')
+                // .replace(/[^\w\-]+/g, '')
+                .replace(/[^a-zA-Z0-9_\u4e00-\u9fa5\s-]/gu, '')
                 .replace(/\-\-+/g, '-');
         },
 
