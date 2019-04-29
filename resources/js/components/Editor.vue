@@ -58,6 +58,7 @@
                 return new Quill(this.$refs.editor, {
                     modules: {
                         syntax: true,
+                        table:true,
                         toolbar: [
                             [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
                             ['bold', 'italic', 'underline', 'strike', 'code'],
