@@ -5,8 +5,13 @@
 }
 
 .cr-boundary {
+    position: relative;
   max-width: 600px;
   max-height: 400px;
+  overflow: hidden;
+  width: 100%;
+  margin:0 auto;
+  z-index: 1;
 }
 
 .cr-resizer {

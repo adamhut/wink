@@ -137,7 +137,7 @@
             <vue-croppie
                     ref="croppieRef"
                     :enableOrientation="true"
-                    :viewport="viewport"
+                    :viewport="{ width: 600, height: 400}"
                     :boundary="boundary"
                     :enableResize="true">
             </vue-croppie>
