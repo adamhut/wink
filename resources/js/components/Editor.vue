@@ -36,7 +36,7 @@
         mounted() {
             this.editor = this.createEditor();
 
-            this.editor.getModule('table');
+            // this.editor.getModule('table');
 
             this.handleEditorValue();
 
@@ -60,7 +60,7 @@
                 return new Quill(this.$refs.editor, {
                     modules: {
                         syntax: true,
-                        table:true,
+                        // table:true,
                         toolbar: [
                             [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
                             ['bold', 'italic', 'underline', 'strike', 'code'],
