@@ -36,6 +36,8 @@
         mounted() {
             this.editor = this.createEditor();
 
+            this.editor.getModule('table');
+
             this.handleEditorValue();
 
             this.handleClicksInsideEditor();
