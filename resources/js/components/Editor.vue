@@ -59,9 +59,11 @@
                     modules: {
                         syntax: true,
                         toolbar: [
+                            [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
                             ['bold', 'italic', 'underline', 'strike', 'code'],
+                            [{ 'color': [] }, { 'background': [] }],
                             [{'header': '2'}, {'header': '3'}],
-                            [{'list': 'ordered'}, {'list': 'bullet'}, 'link'],
+                            [{'list': 'ordered'}, {'list': 'bullet'},{ 'align': [] } ,'link'],
                             ['blockquote', 'code-block'],
 //                        [{'direction': 'rtl'}],
                         ]
