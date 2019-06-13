@@ -35,7 +35,7 @@ class PostsController
         })
             ->orderBy('created_at', 'DESC')
             ->with('tags', 'categories')
-            ->paginate(1);
+            ->paginate(30);
 
         return PostsResource::collection($entries);
     }
