@@ -28,10 +28,15 @@ module.exports = {
                 (this.filters && this.filters.category_id ? '&category_id=' + this.filters.category_id : '')
             ).then(response => {
                 this.entries = response.data.data;
+                
+                this.hasMoreEntries = false;
 
-                this.hasMoreEntries = response.data.meta.current_page < response.data.meta.last_page;
+                this.nextPageUrl = null;
 
-                this.nextPageUrl = response.data.links.next;
+                if (response.data.meta && response.data.meta.current_page) {
+                    this.hasMoreEntries = response.data.meta.current_page < response.data.meta.last_page;
+                    this.nextPageUrl = response.data.links.next;
+                }
 
                 this.ready = true;
             });
@@ -47,9 +52,14 @@ module.exports = {
             this.http().get(this.nextPageUrl).then(response => {
                 this.entries.push(...response.data.data);
    
-                this.hasMoreEntries = response.data.meta.current_page < response.data.meta.last_page;
+                this.hasMoreEntries = false;
 
-                this.nextPageUrl = response.data.links.next;
+                this.nextPageUrl = null;
+
+                if (response.data.meta && response.data.meta.current_page) {
+                    this.hasMoreEntries = response.data.meta.current_page < response.data.meta.last_page;
+                    this.nextPageUrl = response.data.links.next;
+                }
 
                 this.loadingMoreEntries = false;
             });
